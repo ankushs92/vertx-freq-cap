@@ -6,3 +6,5 @@ The app is written in Groovy and leverages Redis hashes as a user impression cou
 
 Fire it up and launch `http://localhost:8080/cap?campaignId=1&timestamp=2017-07-10 10:10:10'
 `
+
+TODO : add more methods to Dates
