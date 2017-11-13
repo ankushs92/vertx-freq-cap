@@ -1,4 +1,4 @@
-**Intro**
+**Hello!**
 
 This is a web service built using Vertx and Redis. It is only intended to be a showcase of vertx framework.
 
