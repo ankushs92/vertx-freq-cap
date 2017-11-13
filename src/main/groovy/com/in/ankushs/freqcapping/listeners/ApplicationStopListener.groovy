@@ -29,4 +29,5 @@ class ApplicationStopListener implements ApplicationListener<ContextClosedEvent>
             }
         }
     }
+
 }

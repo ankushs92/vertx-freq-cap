@@ -19,7 +19,6 @@ class FreqCapHandler implements Handler<RoutingContext>{
         this.freqCapService = freqCapService
     }
 
-
     @Override
     void handle(RoutingContext rc) {
         def req = rc.request()

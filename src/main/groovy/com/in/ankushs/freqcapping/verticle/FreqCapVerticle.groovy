@@ -33,13 +33,11 @@ class FreqCapVerticle extends AbstractVerticle{
 
     @Override
     void start(){
-
         router.get('/cap')
               .handler(freqCapHandler)
               .failureHandler(freqCapHandlerFailureHandler)
 
         router.get('/metrics')
               .handler(freqCapHandler)
-
     }
 }

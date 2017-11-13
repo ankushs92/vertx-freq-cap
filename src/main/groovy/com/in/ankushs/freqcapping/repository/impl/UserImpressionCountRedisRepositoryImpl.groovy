@@ -71,7 +71,6 @@ class UserImpressionCountRedisRepositoryImpl implements UserImpressionCountRepos
         return process(hashKey, hashField)
     }
 
-
     private Future<Integer> process(
             String hashKey,
             String hashField

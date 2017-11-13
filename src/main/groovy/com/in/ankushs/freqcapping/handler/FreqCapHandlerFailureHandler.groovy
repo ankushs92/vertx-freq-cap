@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component
 @Slf4j
 class FreqCapHandlerFailureHandler implements Handler<RoutingContext> {
 
-
     @Override
     void handle(RoutingContext rc) {
         def failure = rc.failure()

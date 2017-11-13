@@ -9,15 +9,9 @@ import java.time.format.DateTimeFormatter
  */
 class Dates {
 
-
     static LocalDateTime isoToLocalDateTime(String timestamp){
         PreConditions.notNull(timestamp, 'timestamp cannot be null')
         LocalDateTime.parse(timestamp, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
     }
-
-    static String getHourInstant(LocalDateTime timestamp){
-        Instant.from(timestamp)
-    }
-
 
 }

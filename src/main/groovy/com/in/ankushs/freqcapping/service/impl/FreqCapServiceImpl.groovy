@@ -20,7 +20,6 @@ import static com.in.ankushs.freqcapping.constants.CapConstants.*
 @Slf4j
 class FreqCapServiceImpl implements FreqCapService{
 
-
     final UserImpressionCountService userImpressionCountService
 
     FreqCapServiceImpl(UserImpressionCountService userImpressionCountService){
@@ -61,13 +60,11 @@ class FreqCapServiceImpl implements FreqCapService{
                                 {
                                     capReached = true
                                 }
-                                future.complete(
-                                        new FreqCapDetails(
+                                future.complete(new FreqCapDetails(
                                                 timestamp : timestamp, dailyCount : dailyCount,
                                                 hourlyCount : hourlyCount, totalCount : totalCount,
-                                                capReached : capReached
-                                        )
-                                )
+                                                capReached : capReached )
+                                                )
                             }
                             else{
                                 future.fail(ar.cause())
