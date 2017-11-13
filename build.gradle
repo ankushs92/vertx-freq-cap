@@ -1,0 +1,40 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.8.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.in.ankushs.freqcapping'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+final vertxVersion = '3.4.2'
+
+dependencies {
+	compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.12'
+
+	//Vertx
+	compile group: 'io.vertx', name: 'vertx-core', version: vertxVersion
+	compile group: 'io.vertx', name: 'vertx-dropwizard-metrics', version: vertxVersion
+	compile group: 'io.vertx', name: 'vertx-web', version: vertxVersion
+	compile group: 'io.vertx', name: 'vertx-redis-client', version: vertxVersion
+
+	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.codehaus.groovy:groovy')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
