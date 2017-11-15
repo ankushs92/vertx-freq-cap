@@ -8,3 +8,8 @@ Fire it up and launch `http://localhost:8080/cap?campaignId=1&timestamp=2017-07-
 `
 
 TODO : add more methods to Dates
+
+**TODO**
+
+1. Add unit and integration tests
+2. More documentation
