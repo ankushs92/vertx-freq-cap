@@ -45,11 +45,11 @@ class FreqCapServiceImpl implements FreqCapService{
         CompositeFuture.all(futures)
                        .setHandler{ ar ->
                             if(ar.succeeded()){
-                                def resultList = ar.result().list()
+                                def resultList = ar.result().list()?.collect { it as Integer }
 
-                                def hourlyCount = resultList[0] as Integer
-                                def dailyCount = resultList[1] as Integer
-                                def totalCount = resultList[2] as Integer
+                                def hourlyCount = resultList[0]
+                                def dailyCount = resultList[1]
+                                def totalCount = resultList[2]
 
                                 boolean capReached = false
 

@@ -2,6 +2,7 @@ package com.in.ankushs.freqcapping.repository.impl
 
 import com.in.ankushs.freqcapping.constants.RedisKeys
 import com.in.ankushs.freqcapping.repository.UserImpressionCountRepository
+import com.in.ankushs.freqcapping.util.Dates
 import com.in.ankushs.freqcapping.util.PreConditions
 import groovy.util.logging.Slf4j
 import io.vertx.core.Future
@@ -37,6 +38,7 @@ class UserImpressionCountRedisRepositoryImpl implements UserImpressionCountRepos
         def hashKey = RedisKeys.USER_IMPRESSIONS_HOURLY_COUNT_HASH_KEY
         def hashField = RedisKeys.USER_IMPRESSIONS_HOURLY_COUNT_HASH_FIELD_TEMPLATE
                                  .replace("<camp_id>", campaignId as String)
+                                 .replace("<date_as_iso>", Dates.getHourTimestampAsIsoString(timestamp) as String)
 
         return process(hashKey, hashField)
     }
@@ -52,7 +54,8 @@ class UserImpressionCountRedisRepositoryImpl implements UserImpressionCountRepos
 
         def hashKey = RedisKeys.USER_IMPRESSIONS_DAILY_COUNT_HASH_KEY
         def hashField = RedisKeys.USER_IMPRESSIONS_DAILY_COUNT_HASH_FIELD_TEMPLATE
-                .replace("<camp_id>", campaignId as String)
+                                .replace("<camp_id>", campaignId as String)
+                                .replace("<date_as_iso>", Dates.getDateTimestampAsIsoString(timestamp) as String)
 
         return process(hashKey, hashField)
     }

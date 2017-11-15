@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component
  */
 @Component
 @Slf4j
-class FreqCapHandlerFailureHandler implements Handler<RoutingContext> {
+class FailureHandler implements Handler<RoutingContext> {
 
     @Override
     void handle(RoutingContext rc) {
@@ -19,6 +19,5 @@ class FreqCapHandlerFailureHandler implements Handler<RoutingContext> {
 
         log.error '', failure
         rc.response().end('Internal Server Error')
-
     }
 }

@@ -19,7 +19,6 @@ class EnvironmentUtil{
 
     boolean isDev(){
         "dev" in environment.getActiveProfiles()
-        return Arrays.asList(environment.getActiveProfiles()).contains("dev")
     }
 
     boolean isTest(){

@@ -1,33 +1,37 @@
 package com.in.ankushs.freqcapping.verticle
 
+import com.in.ankushs.freqcapping.handler.FailureHandler
 import com.in.ankushs.freqcapping.handler.FreqCapHandler
-import com.in.ankushs.freqcapping.handler.FreqCapHandlerFailureHandler
 import com.in.ankushs.freqcapping.handler.MetricsHandler
 import io.vertx.core.AbstractVerticle
 import io.vertx.ext.web.Router
+import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
+
+import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE
 
 /**
  * Created by ankushsharma on 13/11/17.
  */
 @Component
+@Scope(SCOPE_PROTOTYPE)
 class FreqCapVerticle extends AbstractVerticle{
 
     final Router router
     final FreqCapHandler freqCapHandler
-    final FreqCapHandlerFailureHandler freqCapHandlerFailureHandler
+    final FailureHandler failureHandler
     final MetricsHandler metricsHandler
 
     FreqCapVerticle(
             Router router,
             FreqCapHandler freqCapHandler,
-            FreqCapHandlerFailureHandler freqCapHandlerFailureHandler,
+            FailureHandler failureHandler,
             MetricsHandler metricsHandler
     )
     {
         this.router = router
         this.freqCapHandler = freqCapHandler
-        this.freqCapHandlerFailureHandler = freqCapHandlerFailureHandler
+        this.failureHandler = failureHandler
         this.metricsHandler = metricsHandler
     }
 
@@ -35,9 +39,10 @@ class FreqCapVerticle extends AbstractVerticle{
     void start(){
         router.get('/cap')
               .handler(freqCapHandler)
-              .failureHandler(freqCapHandlerFailureHandler)
+              .failureHandler(failureHandler)
 
         router.get('/metrics')
-              .handler(freqCapHandler)
+              .handler(metricsHandler)
+              .failureHandler(failureHandler)
     }
 }

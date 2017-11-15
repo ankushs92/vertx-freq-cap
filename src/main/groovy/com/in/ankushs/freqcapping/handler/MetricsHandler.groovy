@@ -18,7 +18,7 @@ class MetricsHandler implements Handler<RoutingContext> {
 
     MetricsHandler(
             Vertx vertx,
-            MetricsService metricsServic
+            MetricsService metricsService
     )
     {
         this.metricsService = metricsService

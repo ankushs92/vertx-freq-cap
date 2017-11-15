@@ -37,7 +37,8 @@ class FreqCapHandler implements Handler<RoutingContext>{
                                         hourlyCount : details.hourlyCount,
                                         dailyCount : details.dailyCount,
                                         totalCount : details.totalCount,
-                                        capReached : details.capReached ]
+                                        capReached : details.capReached
+                                ]
 
                                 def json = Json.toPrettyJson(responseMap)
                                 resp.putHeader('Connection','Keep-Alive')
