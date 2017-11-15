@@ -40,7 +40,7 @@ class UserImpressionCountRedisRepositoryImpl implements UserImpressionCountRepos
                                  .replace("<camp_id>", campaignId as String)
                                  .replace("<date_as_iso>", Dates.getHourTimestampAsIsoString(timestamp) as String)
 
-        return process(hashKey, hashField)
+        return getCountFuture(hashKey, hashField)
     }
 
     @Override
@@ -57,7 +57,7 @@ class UserImpressionCountRedisRepositoryImpl implements UserImpressionCountRepos
                                 .replace("<camp_id>", campaignId as String)
                                 .replace("<date_as_iso>", Dates.getDateTimestampAsIsoString(timestamp) as String)
 
-        return process(hashKey, hashField)
+        return getCountFuture(hashKey, hashField)
     }
 
     @Override
@@ -71,10 +71,10 @@ class UserImpressionCountRedisRepositoryImpl implements UserImpressionCountRepos
 
         def hashKey = RedisKeys.USER_IMPRESSIONS_TOTAL_COUNT_HASH_KEY
         def hashField = RedisKeys.USER_IMPRESSIONS_TOTAL_COUNT_HASH_FIELD
-        return process(hashKey, hashField)
+        return getCountFuture(hashKey, hashField)
     }
 
-    private Future<Integer> process(
+    private Future<Integer> getCountFuture(
             String hashKey,
             String hashField
     )
