@@ -14,6 +14,17 @@ import javax.annotation.PostConstruct
 @Slf4j
 class FreqcappingApplication {
 
+	private static final int NUMBER_OF_VERTICLES
+
+	static{
+		def cores = Runtime.getRuntime().availableProcessors()
+		log.info "Number of cores available {} " , cores
+
+		//We'll run 2 verticles per core
+		NUMBER_OF_VERTICLES = cores * 2
+		log.info "Deploying {} verticle instances ", NUMBER_OF_VERTICLES
+	}
+
 	@Autowired
 	Vertx vertx
 
@@ -24,16 +35,12 @@ class FreqcappingApplication {
 		SpringApplication.run FreqcappingApplication, args
 	}
 
-
 	@PostConstruct
 	void deployVerticles(){
 		vertx.registerVerticleFactory(springVerticleFactory)
-		def cores = Runtime.getRuntime().availableProcessors()
-		log.info "Number of cores available {} " , cores
-		def numOfVerticlesToDeploy = cores * 2
-		log.info "Deploying {} verticle instances ", numOfVerticlesToDeploy
-		def options = new DeploymentOptions().setInstances(numOfVerticlesToDeploy)
-		vertx.deployVerticle(springVerticleFactory.prefix() + ":" + FreqCapVerticle.class.getName(),options,{ deployment->
+
+		def options = new DeploymentOptions().setInstances(NUMBER_OF_VERTICLES)
+		vertx.deployVerticle(springVerticleFactory.prefix() + ":" + FreqCapVerticle.class.name ,options,{ deployment->
 			if(deployment.succeeded()){
 				log.info "Deployment done. Info {} " , deployment.result()
 			}
@@ -42,4 +49,5 @@ class FreqcappingApplication {
 			}
 		})
 	}
+
 }

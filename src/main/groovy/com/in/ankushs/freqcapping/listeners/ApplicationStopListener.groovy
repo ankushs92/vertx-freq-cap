@@ -8,6 +8,8 @@ import org.springframework.context.event.ContextClosedEvent
 import org.springframework.stereotype.Component
 
 /**
+ * Class that can do certain stuff with Spring beans just before the app shutsdowns.
+ * We only want to close redis connection
  * Created by ankushsharma on 14/11/17.
  */
 @Component

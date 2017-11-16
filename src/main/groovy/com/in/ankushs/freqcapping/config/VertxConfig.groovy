@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 /**
+ * Vertx and Router config goes here
  * Created by ankushsharma on 01/09/17.
  */
 @Configuration
@@ -21,15 +22,14 @@ class VertxConfig {
     Vertx vertx(){
         Vertx.vertx(
                 new VertxOptions()
+                    //A thread blocked for more than 2 seconds will be abandoned
                     .setBlockedThreadCheckInterval(2000L)
                     .setHAEnabled(true)
                     .setMetricsOptions(
                         new DropwizardMetricsOptions()
                                 .setEnabled(true)
             )
-        ).exceptionHandler{ ex ->
-            log.error 'Unhandeled Exception {}', ex
-        }
+        )
     }
 
     @Bean

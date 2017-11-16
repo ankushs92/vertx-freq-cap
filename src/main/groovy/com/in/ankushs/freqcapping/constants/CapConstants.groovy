@@ -5,7 +5,7 @@ package com.in.ankushs.freqcapping.constants
  */
 class CapConstants {
 
-    //These are just hard coded for convenience purposes. In any production based setup, these fields should be fetched from db and saved to Redis
+    //These are just hard coded for convenience purposes. In any production based setup, these fields should be fetched from cache or db
     static final HOURLY_COUNT_CAP = 100
     static final DAILY_COUNT_CAP = 1000
     static final TOTAL_COUNT_CAP = 10000

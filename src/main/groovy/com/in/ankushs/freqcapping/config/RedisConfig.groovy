@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 /**
+ * Redis configuration goes here. We're going to use vertx-redis-client to work with redis
  * Created by Ankush on 03/03/17.
  */
 @Configuration

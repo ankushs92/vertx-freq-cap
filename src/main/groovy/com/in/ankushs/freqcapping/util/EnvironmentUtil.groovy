@@ -13,10 +13,6 @@ class EnvironmentUtil{
     @Autowired
     Environment environment
 
-    boolean isProduction(){
-        !(isDev() || isTest())
-    }
-
     boolean isDev(){
         "dev" in environment.getActiveProfiles()
     }
