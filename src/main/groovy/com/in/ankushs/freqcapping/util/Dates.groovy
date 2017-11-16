@@ -32,13 +32,13 @@ class Dates {
 
     static long getDateTimestampAsIsoString(LocalDateTime timestamp){
         LocalDateTime.of(
-                timestamp.year,
-                timestamp.monthValue,
-                timestamp.dayOfMonth,
-                0,
-                0,
-                0
-        )
+                    timestamp.year,
+                    timestamp.monthValue,
+                    timestamp.dayOfMonth,
+                    0,
+                    0,
+                    0
+                )
                 .atZone(ZoneId.of("UTC"))
                 .toInstant()
                 .toEpochMilli()

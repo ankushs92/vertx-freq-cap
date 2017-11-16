@@ -53,18 +53,17 @@ class FreqCapServiceImpl implements FreqCapService{
 
                                 boolean capReached = false
 
-                                if(hourlyCount > HOURLY_COUNT_CAP
-                                    || dailyCount > DAILY_COUNT_CAP
-                                    || totalCount > TOTAL_COUNT_CAP
-                                )
-                                {
+                                if(hourlyCount > HOURLY_COUNT_CAP || dailyCount > DAILY_COUNT_CAP || totalCount > TOTAL_COUNT_CAP){
                                     capReached = true
                                 }
-                                future.complete(new FreqCapDetails(
-                                                timestamp : timestamp, dailyCount : dailyCount,
-                                                hourlyCount : hourlyCount, totalCount : totalCount,
-                                                capReached : capReached )
-                                                )
+                                def freqCapDetails = new FreqCapDetails(
+                                        timestamp : timestamp,
+                                        dailyCount : dailyCount,
+                                        hourlyCount : hourlyCount,
+                                        totalCount : totalCount,
+                                        capReached : capReached
+                                )
+                                future.complete(freqCapDetails)
                             }
                             else{
                                 future.fail(ar.cause())

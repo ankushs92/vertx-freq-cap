@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Created by Ankush on 17/07/17.
  */
-
 class Json {
+
     private static final ObjectMapper objectMapper = new ObjectMapper()
 
     static <T> T toObject(
